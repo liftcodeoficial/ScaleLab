@@ -1,0 +1,15 @@
+services:
+  web:
+    image: node:20-slim
+    working_dir: /app
+    user: node
+    stdin_open: true
+    tty: true
+    command: sh -c "npm install && npx next dev -H 0.0.0.0"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - WATCHPACK_POLLING=true
+      - NEXT_TELEMETRY_DISABLED=1
